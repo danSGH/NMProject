@@ -11,29 +11,34 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.nm.products.movies.model.MovieInfo;
 import com.nm.products.movies.service.MovieServiceImpl;
+import com.nm.products.tvseries.service.TVSeriesServiceImpl;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/movies")
 public class MoviesController {
 	
-	public MoviesController() {
-		System.out.print("Constructor");
-	}
-	
-	@Autowired
-	private MovieServiceImpl movieService;
-	
-	@GetMapping(value = "/title/{t}")
-	public ResponseEntity<MovieInfo> getMovieInfo(@PathVariable("t") String movieName) {
-		System.out.println("HI");
-		
-		MovieInfo movieInfo = movieService.getMovieInfo(movieName);
-		if (movieInfo == null) {
-			return new ResponseEntity<MovieInfo>(HttpStatus.NOT_FOUND);
-		} else {
-			return new ResponseEntity<MovieInfo>(movieInfo, HttpStatus.OK);
-		}
-	}
+//	@Autowired
+//	private MovieServiceImpl movieService;
+//	
+//
+//	public MoviesController() {
+//		System.out.print("Constructor");
+//	}
+//	
+//
+//	
+//	@GetMapping(value = "/title/{t}")
+//	public ResponseEntity<MovieInfo> getMovieInfo(@PathVariable("t") String movieName) {
+//		
+//		System.out.println("HI");
+//		
+//		MovieInfo movieInfo = movieService.getMovieInfo(movieName);
+//		if (movieInfo == null) {
+//			return new ResponseEntity<MovieInfo>(HttpStatus.NOT_FOUND);
+//		} else {
+//			return new ResponseEntity<MovieInfo>(movieInfo, HttpStatus.OK);
+//		}
+//	}
 
 }

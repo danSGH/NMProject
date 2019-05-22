@@ -1,6 +1,5 @@
 package com.nm.products.movies.service;
 
-import java.io.IOException;
 import java.net.URL;
 
 import org.springframework.stereotype.Service;
@@ -62,7 +61,7 @@ public class MovieServiceImpl implements MovieService {
 
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			URL url = new URL(MovieConstants.API_HOST_URL + movieName + MovieConstants.API_FUNCTION);
+			URL url = new URL(MovieConstants.API_HOST_URL + movieName + MovieConstants.API_KEY);
 			MovieInfo movieInfo = mapper.readValue(url, MovieInfo.class);
 			if (movieInfo != null) {
 				System.out.println(movieInfo.toString());
