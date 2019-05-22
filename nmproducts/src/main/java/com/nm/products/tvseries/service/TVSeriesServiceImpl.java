@@ -11,9 +11,6 @@ import com.nm.products.tvseries.model.TVSeriesInfo;
 @Service("tvSeriesService")
 public class TVSeriesServiceImpl implements TVSeriesService {
 
-	public TVSeriesServiceImpl() {
-		
-	}
 	@Override
 	public TVSeriesInfo getTVSeriesInfo(String title, int season) {
 		

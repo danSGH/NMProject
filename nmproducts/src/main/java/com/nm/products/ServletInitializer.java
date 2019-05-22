@@ -1,4 +1,4 @@
-package com.nm.products.movies;
+package com.nm.products;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
