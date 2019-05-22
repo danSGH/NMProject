@@ -13,7 +13,7 @@ import com.nm.products.tvseries.model.TVSeriesInfo;
 import com.nm.products.tvseries.service.TVSeriesServiceImpl;
 
 @RestController
-//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/tvseries")
 public class TVSeriesController {
 
@@ -24,18 +24,18 @@ public class TVSeriesController {
 			System.out.print("Constructor" + tvSeriesService);
 		}
 	
-//	@GetMapping(value = "/title/{t}/season/{s}")
-//	public ResponseEntity<TVSeriesInfo> getTVSeriesInfo(@PathVariable("t") String tvSeriesName, 
-//			@PathVariable("s") int season) {
-//		
-//		System.out.println("HI");
-//		
-//		TVSeriesInfo tvSeriesInfo = tvSeriesService.getTVSeriesInfo(tvSeriesName, season);
-//		if (tvSeriesInfo == null) {
-//			return new ResponseEntity<TVSeriesInfo>(HttpStatus.NOT_FOUND);
-//		} else {
-//			return new ResponseEntity<TVSeriesInfo>(tvSeriesInfo, HttpStatus.OK);
-//		}
-//	}
+	@GetMapping(value = "/title/{t}/season/{s}")
+	public ResponseEntity<TVSeriesInfo> getTVSeriesInfo(@PathVariable("t") String tvSeriesName, 
+			@PathVariable("s") int season) {
+		
+		System.out.println("HI");
+		
+		TVSeriesInfo tvSeriesInfo = tvSeriesService.getTVSeriesInfo(tvSeriesName, season);
+		if (tvSeriesInfo == null) {
+			return new ResponseEntity<TVSeriesInfo>(HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<TVSeriesInfo>(tvSeriesInfo, HttpStatus.OK);
+		}
+	}
 
 }
