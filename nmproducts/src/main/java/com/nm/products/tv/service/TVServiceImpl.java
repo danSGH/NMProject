@@ -1,23 +1,23 @@
-package com.nm.products.tvseries.service;
+package com.nm.products.tv.service;
 
 import java.net.URL;
 
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nm.products.tvseries.TVSeriesConstants;
-import com.nm.products.tvseries.model.TVSeriesInfo;
+import com.nm.products.tv.TVConstants;
+import com.nm.products.tv.model.TVSeriesInfo;
 
-@Service("tvSeriesService")
-public class TVSeriesServiceImpl implements TVSeriesService {
+@Service("tvService")
+public class TVServiceImpl implements TVService {
 
 	@Override
 	public TVSeriesInfo getTVSeriesInfo(String title, int season) {
 		
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			URL url = new URL(TVSeriesConstants.API_HOST_URL + title + TVSeriesConstants.API_SEASON + season + 
-					TVSeriesConstants.API_KEY);
+			URL url = new URL(TVConstants.API_HOST_URL + title + TVConstants.API_SEASON + season + 
+					TVConstants.API_KEY);
 			TVSeriesInfo tvSeriesInfo = mapper.readValue(url, TVSeriesInfo.class);
 			if (tvSeriesInfo != null) {
 				System.out.println(tvSeriesInfo.toString());

@@ -1,4 +1,4 @@
-package com.nm.products.tvseries.model;
+package com.nm.products.tv.model;
 
 import java.util.List;
 

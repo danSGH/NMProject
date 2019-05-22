@@ -1,6 +1,6 @@
-package com.nm.products.tvseries;
+package com.nm.products.tv;
 
-public class TVSeriesConstants {
+public class TVConstants {
 	
 	public static final String API_KEY = "&apikey=7409f1e8";
 	
