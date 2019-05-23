@@ -25,8 +25,6 @@ public class MoviesController {
 		System.out.print("Constructor");
 	}
 	
-
-	
 	@GetMapping(value = "/title/{t}")
 	public ResponseEntity<MovieInfo> getMovieInfo(@PathVariable("t") String movieName) {
 		
