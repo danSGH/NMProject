@@ -1,7 +1,78 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Welcome to {{ title }}!
+    Welcome to {{ titles }}!
   </h1>
+</div>
+
+<form (submit)="search()" [formGroup]="formGroup">
+  <div [formGroup]="formGroup">
+    <label for="title">Title: </label>
+    <input class="input" formControlName="titleSearch" id="titleSearch" name="Title" required type="text" size="30" [minLength]="0" [maxLength]="30"
+           value="Seinfeld"/>
   </div>
-<router-outlet></router-outlet>
+  <br>
+  <div [formGroup]="formGroup">
+    <label>Season: </label>
+    <input class="input"  formControlName="seasonSearch" id="seasonSearch" maxlength="2" name="season" required type="season" type="number" size="2" min="1"/>
+  </div>
+  <br>
+  <div>
+    <button type="submit" class="button">Submit</button>
+  </div>
+
+
+<br>
+<table border=1>
+  <thead>
+  <tr>
+    <th width="150" align="left">Title</th>
+    <th width="150" align="center">Season</th>
+    <th width="150" align="center">Total Seasons</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngIf="tvSeriesInfo !== undefined">
+    <td>{{ tvSeriesInfo?.Title }}</td>
+    <td align="center">{{tvSeriesInfo?.Season}}</td>
+    <td align="center">{{tvSeriesInfo?.totalSeasons}}</td>
+  </tr>
+  </tbody>
+</table>
+<br>
+<br>
+
+<div [formGroup]="formGroup">
+  <label>Filter: </label>
+  <input class="input"  formControlName="filter" id="filter" (keyup)="applyFilter($event.target.value)">
+
+</div>
+</form>
+<div class="container">
+<mat-table [dataSource]="dataSource" matSort>
+
+  <ng-container matColumnDef="Title">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.Title}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="Episode">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Episode </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.Episode}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="Released">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Released </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.Released | date:"MM/dd/yyyy"}}  </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="imdbID">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> IMDB Rating </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.imdbID}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;">
+  </mat-row>
+</mat-table>
+</div>
+
